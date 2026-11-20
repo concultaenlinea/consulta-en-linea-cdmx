@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7A1F3D">
+<title>Servicios Vehiculares | Ciudad de México</title>
+<style>
+:root{--navy:#142d4e;--navy2:#1d416b;--wine:#7d263b;--gold:#c6a56a;--ink:#202b38;--muted:#687789;--line:#dce3eb;--bg:#f3f6fa;--white:#fff;--green:#18794e;--red:#b42318;--shadow:0 12px 32px rgba(20,45,78,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.5}
+button,input,select{font:inherit}button{cursor:pointer}.topline{height:5px;background:linear-gradient(90deg,var(--wine) 0 34%,var(--white) 34% 67%,var(--green) 67%)}
+header{background:var(--navy);color:#fff}.head{max-width:1180px;margin:auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}.brandmark{width:48px;height:48px;border:1px solid rgba(255,255,255,.45);border-radius:12px;display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff}.brand strong{display:block;font-size:17px;letter-spacing:.04em}.brand small{display:block;color:#c8d4e3;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav a{color:#eaf0f7;text-decoration:none;padding:10px 13px;border-radius:7px;font-size:13px}nav a:hover{background:rgba(255,255,255,.12)}
+.hero{background:linear-gradient(115deg,#142d4e,#234d78);color:#fff;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-100px;top:-220px;box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 84px rgba(255,255,255,.02)}
+.hero-inner{max-width:1180px;margin:auto;padding:58px 24px 62px;position:relative;z-index:1}.eyebrow{color:#d8c18e;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.hero h1{font-size:clamp(30px,4vw,46px);line-height:1.12;max-width:720px;margin:12px 0}.hero p{max-width:680px;color:#d9e3ef;margin:0;font-size:16px}
+main{max-width:1180px;margin:0 auto;padding:34px 24px 70px}.section-title{margin:0 0 7px;font-size:25px;color:var(--navy)}.section-sub{margin:0;color:var(--muted);font-size:14px}.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:-28px;position:relative;z-index:2}
+.service{background:#fff;border:1px solid var(--line);border-radius:13px;padding:23px;box-shadow:var(--shadow)}.service-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}.service-icon{width:45px;height:45px;border-radius:10px;background:#edf2f8;color:var(--navy);display:grid;place-items:center;font-size:22px}.service:nth-child(2) .service-icon{background:#f6edf0;color:var(--wine)}.service h2{font-size:18px;margin:0;color:var(--navy)}.service p{font-size:13px;color:var(--muted);margin:2px 0 0}
+.search-row{display:flex;gap:9px}.search-row input{min-width:0;flex:1}.field{width:100%;border:1px solid #cbd5e1;background:#fff;border-radius:7px;padding:12px 13px;color:var(--ink);outline:none}.field:focus{border-color:#527ba8;box-shadow:0 0 0 3px rgba(82,123,168,.14)}.btn{border:0;border-radius:7px;padding:11px 16px;font-weight:650;font-size:13px;transition:.15s}.btn-primary{background:var(--navy2);color:#fff}.btn-primary:hover{background:var(--navy)}.btn-wine{background:var(--wine);color:#fff}.btn-light{background:#edf2f7;color:var(--navy);border:1px solid var(--line)}.btn-danger{background:#fff1f0;color:var(--red);border:1px solid #f3c7c3}.btn-small{padding:7px 10px;font-size:12px}
+.results{margin-top:14px}.result-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin-top:10px}.result-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}.result-top h3{margin:0;color:var(--navy);font-size:17px}.pill{display:inline-block;border-radius:30px;padding:4px 10px;background:#e9f5ee;color:var(--green);font-size:11px;font-weight:750}.data-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.datum small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}.datum strong{font-size:13px;overflow-wrap:anywhere}.empty{padding:18px;background:#f7f9fc;border:1px dashed #cbd5e1;border-radius:8px;color:var(--muted);font-size:13px}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0}.info-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:17px}.info-box strong{display:block;color:var(--navy);font-size:14px}.info-box span{font-size:12px;color:var(--muted)}
+.admin{margin-top:40px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.admin-head{padding:20px 22px;background:#f8fafc;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.admin-head h2{margin:0;color:var(--navy);font-size:20px}.admin-body{padding:22px}.admin-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.admin-tab{padding:9px 14px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--navy);font-size:13px}.admin-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.admin-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:22px}.form-panel{border:1px solid var(--line);border-radius:9px;padding:16px}.form-panel h3{margin:0 0 14px;color:var(--navy);font-size:16px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.form-field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:650}.form-field.full{grid-column:1/-1}.form-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px}table{border-collapse:collapse;width:100%;font-size:12px;min-width:540px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap}th{background:#f5f7fa;color:#526174;font-size:11px;text-transform:uppercase}tr:last-child td{border-bottom:0}.table-actions{display:flex;gap:5px}
+.admin-note{margin-top:16px;padding:12px 14px;border-left:3px solid var(--gold);background:#fbf8f1;color:#665536;font-size:12px}
+footer{background:#10243d;color:#d5dfeb}.foot{max-width:1180px;margin:auto;padding:28px 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot strong{font-size:14px}.foot small{display:block;color:#aebed0;font-size:11px;margin-top:5px}.foot-links{display:flex;gap:17px;flex-wrap:wrap}.foot a{color:#d5dfeb;text-decoration:none;font-size:12px}
+.toast{position:fixed;right:20px;bottom:20px;background:#142d4e;color:#fff;padding:12px 17px;border-radius:8px;box-shadow:var(--shadow);font-size:13px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
+.hidden{display:none!important}
+@media(max-width:800px){.head{align-items:flex-start;flex-direction:column}.services{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr}.data-grid{grid-template-columns:repeat(2,1fr)}.info-strip{grid-template-columns:1fr}.hero-inner{padding:43px 22px 54px}}
+@media(max-width:480px){main{padding:26px 15px 50px}.head{padding:18px 16px}.search-row{flex-direction:column}.search-row .btn{width:100%}.data-grid{grid-template-columns:1fr 1fr}.admin-body{padding:14px}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.result-top{flex-direction:column}.hero-inner{padding-left:16px;padding-right:16px}}
+
+/* ============================================================
+   IDENTIDAD VISUAL INSTITUCIONAL — PALETA INSPIRADA EN CDMX
+   Guinda, blanco, gris y acentos dorados. No utiliza escudos
+   ni logotipos oficiales ni implica afiliación gubernamental.
+   ============================================================ */
+:root{
+ --navy:#651B35;
+ --navy2:#7A1F3D;
+ --wine:#9B294B;
+ --gold:#B79A62;
+ --ink:#28262A;
+ --muted:#6D6870;
+ --line:#E2DDE0;
+ --bg:#F5F3F4;
+ --white:#FFFFFF;
+ --green:#28734F;
+ --red:#A83232;
+ --shadow:0 10px 28px rgba(76,28,47,.08)
+}
+.topline{height:6px;background:linear-gradient(90deg,#7A1F3D 0 58%,#B79A62 58% 72%,#E9E5E7 72% 100%)}
+header{background:#651B35;border-bottom:4px solid #B79A62}
+.brandmark{border-radius:4px;border:1px solid rgba(255,255,255,.62);background:rgba(255,255,255,.07);letter-spacing:.03em}
+.brand strong{letter-spacing:.055em}
+nav a{border-radius:4px}
+nav a:hover{background:rgba(255,255,255,.15)}
+.hero{background:linear-gradient(115deg,#651B35 0%,#7A1F3D 58%,#92304F 100%)}
+.eyebrow{color:#E2CEA7}
+.hero:after{border-color:rgba(255,255,255,.11);box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 84px rgba(255,255,255,.018)}
+.section-title,.service h2,.result-top h3,.info-box strong,.admin-head h2,.form-panel h3{color:#651B35}
+.service{border-radius:8px;border-top:3px solid #B79A62}
+.service-icon{border-radius:6px;background:#F3E9ED;color:#7A1F3D}
+.service:nth-child(2) .service-icon{background:#F3E9ED;color:#7A1F3D}
+.field{border-radius:5px;border-color:#D6CDD1}
+.field:focus{border-color:#9B294B;box-shadow:0 0 0 3px rgba(155,41,75,.12)}
+.btn{border-radius:5px}
+.btn-primary{background:#7A1F3D}
+.btn-primary:hover{background:#651B35}
+.btn-wine{background:#9B294B}
+.btn-light{background:#F3EFF1;color:#651B35;border-color:#DED5D9}
+.result-card,.info-box{border-radius:7px}
+.pill{border-radius:4px}
+.admin{border-radius:8px;border-top:3px solid #B79A62}
+.admin-head{background:#F6F1F3}
+.admin-tab{border-radius:5px;color:#651B35}
+.admin-tab.active{background:#7A1F3D;border-color:#7A1F3D}
+th{background:#F2EAED;color:#651B35}
+.admin-note{border-left-color:#B79A62;background:#F8F5EF;color:#65583E}
+footer{background:#4D172A;border-top:4px solid #B79A62}
+.toast{background:#651B35;border-radius:5px}
+@media(max-width:800px){nav{width:100%}nav a{padding:9px 10px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="head">
+    <div class="brand">
+      <div class="brandmark" aria-hidden="true">SV</div>
+      <div><strong>SERVICIOS VEHICULARES</strong><small>Portal de consulta · Ciudad de México</small></div>
+    </div>
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a><a href="#permisos">Permisos vehiculares</a><a href="#facturas">Facturas electrónicas</a><a href="#ayuda">Atención y ayuda</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="eyebrow">Plataforma de consulta digital</div>
+    <h1>Consulta de información vehicular y fiscal</h1>
+    <p>Accede a la información de permisos vehiculares y comprobantes fiscales electrónicos mediante herramientas de consulta sencillas y seguras.</p>
+  </div>
+</section>
+
+<main>
+  <section class="services" aria-label="Servicios de consulta">
+    <article class="service" id="permisos">
+      <div class="service-head"><div class="service-icon">▣</div><div><h2>Consulta de permisos vehiculares</h2><p>Localiza un permiso por folio, placa o titular.</p></div></div>
+      <div class="search-row">
+        <input class="field" id="buscarPermiso" placeholder="Ingresa folio, placa o nombre del titular" aria-label="Buscar permiso"/>
+        <button class="btn btn-primary" onclick="consultarPermiso()">Consultar permiso</button>
+      </div>
+      <div class="results" id="resultadoPermiso" aria-live="polite"></div>
+    </article>
+    <article class="service" id="facturas">
+      <div class="service-head"><div class="service-icon">▤</div><div><h2>Consulta de facturas electrónicas</h2><p>Localiza un comprobante por UUID o RFC.</p></div></div>
+      <div class="search-row">
+        <input class="field" id="buscarFactura" placeholder="Ingresa UUID o RFC" aria-label="Buscar factura"/>
+        <button class="btn btn-wine" onclick="consultarFactura()">Consultar factura</button>
+      </div>
+      <div class="results" id="resultadoFactura" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <section class="info-strip" id="ayuda">
+    <div class="info-box"><strong>Consulta sencilla</strong><span>Busca información utilizando los datos de identificación disponibles.</span></div>
+    <div class="info-box"><strong>Información organizada</strong><span>Visualiza los datos principales de cada registro en una ficha clara.</span></div>
+    <div class="info-box"><strong>Atención ciudadana</strong><span>Canales de orientación y soporte para las personas usuarias.</span></div>
+  </section>
+
+  <section class="admin" id="administracion">
+    <div class="admin-head"><div><h2>Administración de registros</h2><p class="section-sub">Panel de revisión y edición temporal de los registros cargados en el código.</p></div><button class="btn btn-light btn-small" onclick="exportarDatos()">Exportar registros JSON</button></div>
+    <div class="admin-body">
+      <div class="admin-tabs">
+        <button class="admin-tab active" id="tabPermisos" onclick="cambiarTab('permisos')">Permisos vehiculares</button>
+        <button class="admin-tab" id="tabFacturas" onclick="cambiarTab('facturas')">Facturas electrónicas</button>
+      </div>
+      <div id="panelPermisos">
+        <div class="admin-grid">
+          <div class="form-panel">
+            <h3 id="tituloFormPermiso">Agregar permiso vehicular</h3>
+            <form id="formPermiso" onsubmit="guardarPermiso(event)">
+              <input type="hidden" id="permisoId"/>
+              <div class="form-grid">
+                <div class="form-field"><label for="pFolio">Folio</label><input class="field" id="pFolio" required placeholder="CDMX-2026-0011"/></div>
+                <div class="form-field"><label for="pTitular">Titular</label><input class="field" id="pTitular" required placeholder="Nombre completo"/></div>
+                <div class="form-field"><label for="pMarca">Marca</label><input class="field" id="pMarca" required placeholder="Marca"/></div>
+                <div class="form-field"><label for="pModelo">Modelo</label><input class="field" id="pModelo" required placeholder="Modelo"/></div>
+                <div class="form-field"><label for="pAnio">Año</label><input class="field" id="pAnio" required placeholder="2026"/></div>
+                <div class="form-field"><label for="pColor">Color</label><input class="field" id="pColor" required placeholder="Color"/></div>
+                <div class="form-field"><label for="pPlaca">Placa</label><input class="field" id="pPlaca" placeholder="Sin asignar"/></div>
+                <div class="form-field"><label for="pVigencia">Vigencia</label><input class="field" id="pVigencia" required placeholder="DD/MM/AAAA"/></div>
+                <div class="form-field full"><label for="pEstatus">Estatus del registro</label><select class="field" id="pEstatus"><option>Vigente</option><option>Vencido</option><option>En revisión</option></select></div>
+              </div>
+              <div class="form-actions"><button class="btn btn-primary" type="submit">Guardar permiso</button><button class="btn btn-light" type="button" onclick="limpiarPermiso()">Limpiar</button></div>
+            </form>
+          </div>
+          <div><h3 style="margin:0 0 12px;color:var(--navy);font-size:16px">Registros de permisos</h3><div class="table-wrap"><table><thead><tr><th>Folio</th><th>Titular</th><th>Vehículo</th><th>Acciones</th></tr></thead><tbody id="tablaPermisos"></tbody></table></div></div>
+        </div>
+      </div>
+      <div id="panelFacturas" class="hidden">
+        <div class="admin-grid">
+          <div class="form-panel">
+            <h3 id="tituloFormFactura">Agregar factura electrónica</h3>
+            <form id="formFactura" onsubmit="guardarFactura(event)">
+              <input type="hidden" id="facturaId"/>
+              <div class="form-grid">
+                <div class="form-field full"><label for="fUuid">UUID</label><input class="field" id="fUuid" required placeholder="Identificador fiscal"/></div>
+                <div class="form-field"><label for="fEmisor">Emisor</label><input class="field" id="fEmisor" required placeholder="Razón social"/></div>
+                <div class="form-field"><label for="fRfcEmisor">RFC emisor</label><input class="field" id="fRfcEmisor" required placeholder="RFC"/></div>
+                <div class="form-field"><label for="fReceptor">Receptor</label><input class="field" id="fReceptor" required placeholder="Nombre o razón social"/></div>
+                <div class="form-field"><label for="fRfcReceptor">RFC receptor</label><input class="field" id="fRfcReceptor" required placeholder="RFC"/></div>
+                <div class="form-field"><label for="fFecha">Fecha</label><input class="field" id="fFecha" required placeholder="DD/MM/AAAA"/></div>
+                <div class="form-field"><label for="fSubtotal">Subtotal ($)</label><input class="field" id="fSubtotal" type="number" min="0" step=".01" required/></div>
+                <div class="form-field"><label for="fIva">IVA ($)</label><input class="field" id="fIva" type="number" min="0" step=".01" required/></div>
+                <div class="form-field"><label for="fTotal">Total ($)</label><input class="field" id="fTotal" type="number" min="0" step=".01" required/></div>
+                <div class="form-field full"><label for="fEstatus">Estatus del registro</label><select class="field" id="fEstatus"><option>Registrada</option><option>Cancelada</option><option>En revisión</option></select></div>
+              </div>
+              <div class="form-actions"><button class="btn btn-wine" type="submit">Guardar factura</button><button class="btn btn-light" type="button" onclick="limpiarFactura()">Limpiar</button></div>
+            </form>
+          </div>
+          <div><h3 style="margin:0 0 12px;color:var(--navy);font-size:16px">Registros de facturas</h3><div class="table-wrap"><table><thead><tr><th>UUID</th><th>Emisor</th><th>Total</th><th>Acciones</th></tr></thead><tbody id="tablaFacturas"></tbody></table></div></div>
+        </div>
+      </div>
+      <div class="admin-note"><strong>Publicación de cambios para todas las personas:</strong> edita las listas <code>permisosIniciales</code> y <code>facturasIniciales</code> en el código fuente de este archivo. Después guarda <code>index.html</code> y vuelve a subirlo a GitHub, reemplazando la versión anterior. Los cambios hechos desde los formularios de esta página son temporales y no modifican el archivo publicado. Los registros de ejemplo son ficticios; para consultar información real se requiere autorización e integración con las fuentes oficiales correspondientes.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div><strong>Servicios Vehiculares | Ciudad de México</strong><small>Plataforma de consulta de información vehicular y fiscal.</small></div>
+    <div class="foot-links"><a href="#inicio">Inicio</a><a href="#permisos">Permisos</a><a href="#facturas">Facturas</a><a href="#ayuda">Ayuda</a><a href="#administracion">Administración</a></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============================================================
+   01. DATOS QUE SE PUBLICAN PARA TODAS LAS PERSONAS
+   ------------------------------------------------------------
+   ESTA ES LA SECCIÓN QUE DEBES EDITAR PARA ACTUALIZAR EL PORTAL.
+
+   - Permisos: agrega, modifica o elimina objetos dentro de
+     permisosIniciales.
+   - Facturas: agrega, modifica o elimina objetos dentro de
+     facturasIniciales.
+   - Cada objeto debe ir separado por una coma.
+   - Conserva un id único en cada lista.
+   - Al terminar, guarda este archivo como index.html y súbelo
+     nuevamente a GitHub, reemplazando el archivo anterior.
+
+   Los registros que vienen cargados son ficticios de ejemplo;
+   no representan permisos ni comprobantes oficiales.
+   ============================================================ */
+const permisosIniciales = [
+ {id:1,folio:"CDMX-2026-0001",titular:"JUAN PÉREZ HERNÁNDEZ",marca:"NISSAN",modelo:"VERSA",anio:"2026",color:"BLANCO",placa:"SIN ASIGNAR",vigencia:"19/12/2026",estatus:"Vigente"},
+ {id:2,folio:"CDMX-2026-0002",titular:"MARÍA EJEMPLO GARCÍA",marca:"VOLKSWAGEN",modelo:"JETTA",anio:"2026",color:"GRIS",placa:"ABC-123-D",vigencia:"30/12/2026",estatus:"Vigente"},
+ {id:3,folio:"CDMX-2026-0003",titular:"CARLOS RAMÍREZ LÓPEZ",marca:"CHEVROLET",modelo:"AVEO",anio:"2025",color:"ROJO",placa:"DEF-456-E",vigencia:"15/11/2026",estatus:"Vigente"},
+ {id:4,folio:"CDMX-2026-0004",titular:"ANA LUCÍA TORRES",marca:"TOYOTA",modelo:"COROLLA",anio:"2026",color:"PLATA",placa:"GHI-789-F",vigencia:"10/10/2026",estatus:"Vigente"},
+ {id:5,folio:"CDMX-2026-0005",titular:"MIGUEL ÁNGEL CRUZ",marca:"KIA",modelo:"K3",anio:"2025",color:"NEGRO",placa:"JKL-234-G",vigencia:"05/09/2026",estatus:"Vencido"},
+ {id:6,folio:"CDMX-2026-0006",titular:"LAURA SÁNCHEZ MORA",marca:"HONDA",modelo:"CITY",anio:"2026",color:"AZUL",placa:"MNO-567-H",vigencia:"22/12/2026",estatus:"Vigente"},
+ {id:7,folio:"CDMX-2026-0007",titular:"ROBERTO DÍAZ VEGA",marca:"MAZDA",modelo:"MAZDA 3",anio:"2025",color:"BLANCO",placa:"PQR-890-J",vigencia:"18/08/2026",estatus:"En revisión"},
+ {id:8,folio:"CDMX-2026-0008",titular:"SOFÍA HERRERA REYES",marca:"HYUNDAI",modelo:"GRAND I10",anio:"2026",color:"ROJO",placa:"STU-123-K",vigencia:"28/12/2026",estatus:"Vigente"},
+ {id:9,folio:"CDMX-2026-0009",titular:"FERNANDO ORTIZ NAVA",marca:"FORD",modelo:"FIGO",anio:"2024",color:"GRIS",placa:"VWX-456-L",vigencia:"01/07/2026",estatus:"Vencido"},
+ {id:10,folio:"CDMX-2026-0010",titular:"PAOLA MÉNDEZ RUIZ",marca:"SUZUKI",modelo:"SWIFT",anio:"2026",color:"AZUL",placa:"YZA-789-M",vigencia:"31/12/2026",estatus:"Vigente"}
+];
+const facturasIniciales = [
+ {id:1,uuid:"UUID-EJEMPLO-0001",emisor:"COMERCIALIZADORA EJEMPLO SA DE CV",rfcEmisor:"XAXX010101000",receptor:"JUAN PÉREZ HERNÁNDEZ",rfcReceptor:"XEXX010101000",fecha:"10/01/2026",subtotal:10000,iva:1600,total:11600,estatus:"Registrada"},
+ {id:2,uuid:"UUID-EJEMPLO-0002",emisor:"SERVICIOS AUTOMOTRICES DEL CENTRO",rfcEmisor:"AAA010101AAA",receptor:"MARÍA EJEMPLO GARCÍA",rfcReceptor:"BBB010101BBB",fecha:"14/01/2026",subtotal:8500,iva:1360,total:9860,estatus:"Registrada"},
+ {id:3,uuid:"UUID-EJEMPLO-0003",emisor:"DISTRIBUIDORA VEHICULAR SA",rfcEmisor:"CCC010101CCC",receptor:"CARLOS RAMÍREZ LÓPEZ",rfcReceptor:"DDD010101DDD",fecha:"20/01/2026",subtotal:12500,iva:2000,total:14500,estatus:"Registrada"},
+ {id:4,uuid:"UUID-EJEMPLO-0004",emisor:"AUTOMOTORES DEL VALLE",rfcEmisor:"EEE010101EEE",receptor:"ANA LUCÍA TORRES",rfcReceptor:"FFF010101FFF",fecha:"02/02/2026",subtotal:9200,iva:1472,total:10672,estatus:"Registrada"},
+ {id:5,uuid:"UUID-EJEMPLO-0005",emisor:"REFACCIONES Y MÁS SA",rfcEmisor:"GGG010101GGG",receptor:"MIGUEL ÁNGEL CRUZ",rfcReceptor:"HHH010101HHH",fecha:"08/02/2026",subtotal:4500,iva:720,total:5220,estatus:"Cancelada"},
+ {id:6,uuid:"UUID-EJEMPLO-0006",emisor:"MOVILIDAD INTEGRAL SA DE CV",rfcEmisor:"III010101III",receptor:"LAURA SÁNCHEZ MORA",rfcReceptor:"JJJ010101JJJ",fecha:"17/02/2026",subtotal:11000,iva:1760,total:12760,estatus:"Registrada"},
+ {id:7,uuid:"UUID-EJEMPLO-0007",emisor:"COMERCIAL DEL MOTOR SA",rfcEmisor:"KKK010101KKK",receptor:"ROBERTO DÍAZ VEGA",rfcReceptor:"LLL010101LLL",fecha:"25/02/2026",subtotal:7800,iva:1248,total:9048,estatus:"En revisión"},
+ {id:8,uuid:"UUID-EJEMPLO-0008",emisor:"AUTOPARTES METROPOLITANAS",rfcEmisor:"MMM010101MMM",receptor:"SOFÍA HERRERA REYES",rfcReceptor:"NNN010101NNN",fecha:"03/03/2026",subtotal:6300,iva:1008,total:7308,estatus:"Registrada"},
+ {id:9,uuid:"UUID-EJEMPLO-0009",emisor:"SOLUCIONES DE TRANSPORTE SA",rfcEmisor:"OOO010101OOO",receptor:"FERNANDO ORTIZ NAVA",rfcReceptor:"PPP010101PPP",fecha:"11/03/2026",subtotal:15000,iva:2400,total:17400,estatus:"Registrada"},
+ {id:10,uuid:"UUID-EJEMPLO-0010",emisor:"GRUPO AUTOMOTRIZ EJEMPLO",rfcEmisor:"QQQ010101QQQ",receptor:"PAOLA MÉNDEZ RUIZ",rfcReceptor:"RRR010101RRR",fecha:"19/03/2026",subtotal:9800,iva:1568,total:11368,estatus:"Registrada"}
+];
+
+/* ============================================================
+   02. DATOS ACTIVOS DE ESTA PUBLICACIÓN
+   No se usa almacenamiento local: la fuente de datos es el
+   código de este archivo, igual para todos los visitantes.
+   ============================================================ */
+let permisos=permisosIniciales.map(registro=>({...registro}));
+let facturas=facturasIniciales.map(registro=>({...registro}));
+// Los formularios permiten probar cambios en pantalla, pero no
+// escriben el archivo HTML. Para publicar cambios edita las listas
+// del apartado 01 y vuelve a subir index.html a GitHub.
+function guardarDatos(){}
+function dinero(n){return new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN"}).format(Number(n)||0)}
+function seguro(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function aviso(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500)}
+function insignia(estatus){return `<span class="pill" style="${estatus==="Cancelada"||estatus==="Vencido"?'background:#fff1f0;color:#b42318':estatus==="En revisión"?'background:#fff7e6;color:#8a5a00':''}">${seguro(estatus)}</span>`}
+
+/* ============================================================
+   03. CONSULTAS PÚBLICAS
+   Los resultados se muestran como información del registro;
+   la validación oficial requiere integración institucional.
+   ============================================================ */
+function consultarPermiso(){
+ const q=document.getElementById("buscarPermiso").value.trim().toLowerCase(),out=document.getElementById("resultadoPermiso");
+ if(!q){out.innerHTML='<div class="empty">Escribe un folio, placa o nombre para realizar la consulta.</div>';return}
+ const encontrados=permisos.filter(p=>[p.folio,p.placa,p.titular].some(x=>String(x).toLowerCase().includes(q)));
+ out.innerHTML=encontrados.length?encontrados.map(p=>`<div class="result-card"><div class="result-top"><div><h3>Permiso ${seguro(p.folio)}</h3><small style="color:var(--muted)">Titular: ${seguro(p.titular)}</small></div>${insignia(p.estatus)}</div><div class="data-grid">
+ <div class="datum"><small>Marca</small><strong>${seguro(p.marca)}</strong></div><div class="datum"><small>Modelo</small><strong>${seguro(p.modelo)}</strong></div><div class="datum"><small>Año</small><strong>${seguro(p.anio)}</strong></div><div class="datum"><small>Color</small><strong>${seguro(p.color)}</strong></div><div class="datum"><small>Placa</small><strong>${seguro(p.placa||"No registrada")}</strong></div><div class="datum"><small>Vigencia</small><strong>${seguro(p.vigencia)}</strong></div></div></div>`).join(""):'<div class="empty">No se encontraron registros con los datos proporcionados. Verifica la información e inténtalo nuevamente.</div>';
+}
+function consultarFactura(){
+ const q=document.getElementById("buscarFactura").value.trim().toLowerCase(),out=document.getElementById("resultadoFactura");
+ if(!q){out.innerHTML='<div class="empty">Escribe un UUID o RFC para realizar la consulta.</div>';return}
+ const encontrados=facturas.filter(f=>[f.uuid,f.rfcEmisor,f.rfcReceptor].some(x=>String(x).toLowerCase().includes(q)));
+ out.innerHTML=encontrados.length?encontrados.map(f=>`<div class="result-card"><div class="result-top"><div><h3>Comprobante ${seguro(f.uuid)}</h3><small style="color:var(--muted)">Fecha: ${seguro(f.fecha)}</small></div>${insignia(f.estatus)}</div><div class="data-grid">
+ <div class="datum"><small>Emisor</small><strong>${seguro(f.emisor)}</strong></div><div class="datum"><small>RFC emisor</small><strong>${seguro(f.rfcEmisor)}</strong></div><div class="datum"><small>Receptor</small><strong>${seguro(f.receptor)}</strong></div><div class="datum"><small>RFC receptor</small><strong>${seguro(f.rfcReceptor)}</strong></div><div class="datum"><small>Subtotal</small><strong>${dinero(f.subtotal)}</strong></div><div class="datum"><small>IVA</small><strong>${dinero(f.iva)}</strong></div><div class="datum"><small>Total</small><strong>${dinero(f.total)}</strong></div></div></div>`).join(""):'<div class="empty">No se encontraron registros con los datos proporcionados. Verifica el UUID o RFC e inténtalo nuevamente.</div>';
+}
+document.getElementById("buscarPermiso").addEventListener("keydown",e=>{if(e.key==="Enter")consultarPermiso()});
+document.getElementById("buscarFactura").addEventListener("keydown",e=>{if(e.key==="Enter")consultarFactura()});
+
+/* ============================================================
+   04. PANEL DE REVISIÓN: CAMBIOS TEMPORALES EN PANTALLA
+   ============================================================ */
+function cambiarTab(tab){
+ const esP=tab==="permisos";
+ document.getElementById("panelPermisos").classList.toggle("hidden",!esP);
+ document.getElementById("panelFacturas").classList.toggle("hidden",esP);
+ document.getElementById("tabPermisos").classList.toggle("active",esP);
+ document.getElementById("tabFacturas").classList.toggle("active",!esP);
+}
+function renderizarTablas(){
+ document.getElementById("tablaPermisos").innerHTML=permisos.map(p=>`<tr><td>${seguro(p.folio)}</td><td>${seguro(p.titular)}</td><td>${seguro(p.marca)} ${seguro(p.modelo)}</td><td><div class="table-actions"><button class="btn btn-light btn-small" onclick="editarPermiso(${p.id})">Editar</button><button class="btn btn-danger btn-small" onclick="eliminarPermiso(${p.id})">Eliminar</button></div></td></tr>`).join("");
+ document.getElementById("tablaFacturas").innerHTML=facturas.map(f=>`<tr><td>${seguro(f.uuid)}</td><td>${seguro(f.emisor)}</td><td>${dinero(f.total)}</td><td><div class="table-actions"><button class="btn btn-light btn-small" onclick="editarFactura(${f.id})">Editar</button><button class="btn btn-danger btn-small" onclick="eliminarFactura(${f.id})">Eliminar</button></div></td></tr>`).join("");
+}
+function guardarPermiso(e){
+ e.preventDefault();const id=Number(document.getElementById("permisoId").value);
+ const p={id:id||Date.now(),folio:v("pFolio"),titular:v("pTitular"),marca:v("pMarca"),modelo:v("pModelo"),anio:v("pAnio"),color:v("pColor"),placa:v("pPlaca"),vigencia:v("pVigencia"),estatus:v("pEstatus")};
+ if(permisos.some(x=>x.folio.toLowerCase()===p.folio.toLowerCase()&&x.id!==id)){aviso("Ese folio ya está registrado.");return}
+ if(id)permisos=permisos.map(x=>x.id===id?p:x);else permisos.push(p);
+ guardarDatos();renderizarTablas();limpiarPermiso();aviso("Cambio temporal. Para publicarlo, edita permisosIniciales en el código y vuelve a subir index.html.");
+}
+function v(id){return document.getElementById(id).value.trim()}
+function editarPermiso(id){
+ const p=permisos.find(x=>x.id===id);if(!p)return;
+ document.getElementById("permisoId").value=p.id;
+ [["pFolio","folio"],["pTitular","titular"],["pMarca","marca"],["pModelo","modelo"],["pAnio","anio"],["pColor","color"],["pPlaca","placa"],["pVigencia","vigencia"],["pEstatus","estatus"]].forEach(([a,b])=>document.getElementById(a).value=p[b]||"");
+ document.getElementById("tituloFormPermiso").textContent="Editar permiso vehicular";document.getElementById("pFolio").focus();
+}
+function limpiarPermiso(){document.getElementById("formPermiso").reset();document.getElementById("permisoId").value="";document.getElementById("tituloFormPermiso").textContent="Agregar permiso vehicular"}
+function eliminarPermiso(id){if(!confirm("¿Deseas eliminar este registro de permiso?"))return;permisos=permisos.filter(x=>x.id!==id);guardarDatos();renderizarTablas();aviso("Eliminación temporal. Para publicarla, edita permisosIniciales en el código y vuelve a subir index.html.")}
+function guardarFactura(e){
+ e.preventDefault();const id=Number(document.getElementById("facturaId").value);
+ const f={id:id||Date.now(),uuid:v("fUuid"),emisor:v("fEmisor"),rfcEmisor:v("fRfcEmisor"),receptor:v("fReceptor"),rfcReceptor:v("fRfcReceptor"),fecha:v("fFecha"),subtotal:Number(v("fSubtotal")),iva:Number(v("fIva")),total:Number(v("fTotal")),estatus:v("fEstatus")};
+ if(facturas.some(x=>x.uuid.toLowerCase()===f.uuid.toLowerCase()&&x.id!==id)){aviso("Ese UUID ya está registrado.");return}
+ if(id)facturas=facturas.map(x=>x.id===id?f:x);else facturas.push(f);
+ guardarDatos();renderizarTablas();limpiarFactura();aviso("Cambio temporal. Para publicarlo, edita facturasIniciales en el código y vuelve a subir index.html.");
+}
+function editarFactura(id){
+ const f=facturas.find(x=>x.id===id);if(!f)return;
+ document.getElementById("facturaId").value=f.id;
+ [["fUuid","uuid"],["fEmisor","emisor"],["fRfcEmisor","rfcEmisor"],["fReceptor","receptor"],["fRfcReceptor","rfcReceptor"],["fFecha","fecha"],["fSubtotal","subtotal"],["fIva","iva"],["fTotal","total"],["fEstatus","estatus"]].forEach(([a,b])=>document.getElementById(a).value=f[b]??"");
+ document.getElementById("tituloFormFactura").textContent="Editar factura electrónica";document.getElementById("fUuid").focus();
+}
+function limpiarFactura(){document.getElementById("formFactura").reset();document.getElementById("facturaId").value="";document.getElementById("tituloFormFactura").textContent="Agregar factura electrónica"}
+function eliminarFactura(id){if(!confirm("¿Deseas eliminar este registro de factura?"))return;facturas=facturas.filter(x=>x.id!==id);guardarDatos();renderizarTablas();aviso("Eliminación temporal. Para publicarla, edita facturasIniciales en el código y vuelve a subir index.html.")}
+function exportarDatos(){
+ const blob=new Blob([JSON.stringify({permisos,facturas},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="registros-servicios-vehiculares.json";a.click();URL.revokeObjectURL(url);aviso("Archivo de registros preparado.");
+}
+renderizarTablas();
+</script>
+</body>
+</html>
