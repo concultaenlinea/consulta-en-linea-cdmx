@@ -3,913 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#641c35">
-
-<title>Portal de Consulta Digital | Ciudad de México</title>
-
+<title>CDMX</title>
 <style>
-:root {
-  --vino: #641c35;
-  --vino-oscuro: #451326;
-  --dorado: #b99a5b;
-  --fondo: #f3f5f7;
-  --texto: #263445;
-  --borde: #dce2e8;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f4f1f2;
+ color:#333;
 }
-
-* {
-  box-sizing: border-box;
+header{
+ background:#641b32;
+ color:white;
+ padding:25px 15px;
+ border-bottom:5px solid #c6a15b;
 }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--fondo);
-  color: var(--texto);
+.encabezado{
+ max-width:1100px;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ gap:18px;
 }
-
-header {
-  background: white;
-  border-bottom: 4px solid var(--dorado);
+.emblema{
+ border:2px solid #d8bd7b;
+ color:#e5cc91;
+ padding:12px;
+ font-weight:bold;
+ font-size:22px;
 }
-
-.encabezado {
-  max-width: 1150px;
-  margin: auto;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
+h1{margin:0;font-size:30px}
+nav{
+ background:#4d1427;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
 }
-
-.emblema {
-  width: 65px;
-  height: 65px;
-  border: 2px solid var(--vino);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--vino);
-  font-size: 25px;
-  font-weight: bold;
-  flex-shrink: 0;
+nav button{
+ background:none;
+ border:0;
+ color:white;
+ padding:16px 22px;
+ cursor:pointer;
+ font-size:15px;
 }
-
-.encabezado h1 {
-  font-size: 23px;
-  margin: 0 0 6px;
-  color: var(--vino);
+nav button:hover,nav button.activo{
+ background:#8a3450;
 }
-
-.encabezado p {
-  margin: 0;
-  color: #586474;
-  font-size: 14px;
+main{
+ max-width:1050px;
+ margin:30px auto;
+ padding:0 15px;
 }
-
-.barra {
-  background: var(--vino);
-  color: white;
+.seccion{
+ display:none;
+ background:white;
+ padding:28px;
+ border-radius:8px;
+ box-shadow:0 3px 12px #00000012;
 }
-
-.menu {
-  max-width: 1150px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 15px;
+.seccion.activa{display:block}
+h2{color:#641b32;margin-top:0}
+h3{color:#641b32}
+.descripcion{
+ line-height:1.6;
+ color:#555;
 }
-
-.menu button {
-  background: transparent;
-  border: 0;
-  color: white;
-  padding: 17px 22px;
-  font-size: 14px;
-  cursor: pointer;
-  font-weight: bold;
+.formulario{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+ margin-top:20px;
 }
-
-.menu button:hover,
-.menu button.activo {
-  background: var(--vino-oscuro);
-  border-bottom: 3px solid var(--dorado);
+.campo{display:flex;flex-direction:column;gap:7px}
+.campo label{font-weight:bold;font-size:14px}
+.campo input{
+ padding:12px;
+ border:1px solid #ccc;
+ border-radius:5px;
+ font-size:15px;
 }
-
-.contenedor {
-  max-width: 1050px;
-  margin: 35px auto;
-  padding: 0 18px;
+.campo input:focus{
+ outline:2px solid #c6a15b;
+ border-color:#c6a15b;
 }
-
-.bienvenida {
-  background: white;
-  padding: 28px;
-  border-radius: 9px;
-  border-left: 5px solid var(--dorado);
-  margin-bottom: 25px;
-  box-shadow: 0 3px 12px #0000000c;
+button.consultar{
+ background:#641b32;
+ color:white;
+ border:0;
+ padding:13px 22px;
+ border-radius:5px;
+ cursor:pointer;
+ font-size:15px;
+ margin-top:18px;
 }
-
-.bienvenida h2 {
-  margin: 0 0 10px;
-  color: var(--vino);
-  font-size: 24px;
+button.consultar:hover{background:#842c49}
+.resultado{
+ margin-top:25px;
+ padding:20px;
+ background:#faf8f8;
+ border-left:4px solid #c6a15b;
+ border-radius:5px;
+ display:none;
 }
-
-.bienvenida p {
-  color: #596675;
-  line-height: 1.6;
-  margin: 0;
+.grid-datos{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
 }
-
-.modulo {
-  background: white;
-  padding: 28px;
-  border-radius: 9px;
-  margin-bottom: 25px;
-  box-shadow: 0 3px 12px #0000000c;
+.dato{
+ padding:10px;
+ background:white;
+ border:1px solid #eee;
+ border-radius:4px;
+ overflow-wrap:anywhere;
 }
-
-.modulo h2 {
-  color: var(--vino);
-  margin-top: 0;
-  font-size: 21px;
+.dato strong{
+ display:block;
+ color:#641b32;
+ font-size:13px;
+ margin-bottom:6px;
 }
-
-.modulo > p {
-  color: #66717e;
-  line-height: 1.5;
+.mensaje{
+ display:none;
+ margin-top:18px;
+ padding:12px;
+ border-radius:5px;
 }
-
-.campo {
-  margin-top: 20px;
+.error{background:#fce8e8;color:#a12626}
+.aviso{
+ background:#fff5dc;
+ border:1px solid #e4c77f;
+ color:#6b501c;
+ padding:12px;
+ border-radius:5px;
+ margin-top:20px;
+ line-height:1.5;
 }
-
-label {
-  display: block;
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 8px;
+footer{
+ text-align:center;
+ background:#4d1427;
+ color:white;
+ padding:22px;
+ margin-top:40px;
+ font-size:13px;
 }
-
-input {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #cbd3dc;
-  border-radius: 6px;
-  font-size: 15px;
-  outline: none;
-}
-
-input:focus {
-  border-color: var(--vino);
-  box-shadow: 0 0 0 2px #641c3520;
-}
-
-.acciones {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-}
-
-.btn {
-  border: 0;
-  border-radius: 6px;
-  padding: 13px 22px;
-  background: var(--vino);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn:hover {
-  background: var(--vino-oscuro);
-}
-
-.btn-secundario {
-  background: #e9edf1;
-  color: #344052;
-}
-
-.btn-secundario:hover {
-  background: #dce2e8;
-}
-
-.resultado {
-  display: none;
-  margin-top: 25px;
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.resultado-cabecera {
-  background: #f5f1f3;
-  padding: 18px;
-  border-bottom: 1px solid var(--borde);
-}
-
-.resultado-cabecera h3 {
-  margin: 0 0 8px;
-  color: var(--vino);
-}
-
-.estado {
-  display: inline-block;
-  background: #fff1d8;
-  color: #79520a;
-  padding: 6px 11px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.detalles {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.dato {
-  padding: 15px 18px;
-  border-bottom: 1px solid var(--borde);
-  overflow-wrap: anywhere;
-}
-
-.dato small {
-  display: block;
-  color: #687585;
-  margin-bottom: 6px;
-}
-
-.dato strong {
-  font-size: 14px;
-}
-
-.aviso {
-  padding: 14px 18px;
-  background: #fff8e9;
-  color: #765516;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.mensaje {
-  display: none;
-  padding: 16px;
-  margin-top: 20px;
-  border-radius: 6px;
-  background: #fff0f0;
-  color: #a22c2c;
-}
-
-.seccion {
-  display: none;
-}
-
-.seccion.activa {
-  display: block;
-}
-
-.pie {
-  margin-top: 50px;
-  background: #30333a;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.pie strong {
-  color: #e0c68d;
-}
-
-@media(max-width: 650px) {
-  .encabezado {
-    padding: 17px;
-  }
-
-  .encabezado h1 {
-    font-size: 18px;
-  }
-
-  .emblema {
-    width: 52px;
-    height: 52px;
-    font-size: 20px;
-  }
-
-  .menu button {
-    flex: 1;
-    padding: 14px 8px;
-    font-size: 12px;
-  }
-
-  .contenedor {
-    margin: 20px auto;
-  }
-
-  .modulo,
-  .bienvenida {
-    padding: 20px;
-  }
-
-  .detalles {
-    grid-template-columns: 1fr;
-  }
+@media(max-width:650px){
+ .formulario,.grid-datos{grid-template-columns:1fr}
+ .seccion{padding:20px}
+ h1{font-size:25px}
+ nav button{padding:13px 10px;font-size:13px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="encabezado">
-    <div class="emblema">CDMX</div>
-    <div>
-      <h1>Portal de Consulta Digital</h1>
-      <p>Ciudad de México | Consulta de documentos electrónicos</p>
-    </div>
-  </div>
+ <div class="encabezado">
+  <div class="emblema">CDMX</div>
+  <div><h1>CDMX</h1></div>
+ </div>
 </header>
 
-<nav class="barra">
-  <div class="menu">
-    <button class="activo"
-      onclick="mostrarSeccion('inicio',this)">
-      Inicio
-    </button>
-
-    <button onclick="mostrarSeccion('permisos',this)">
-      Permisos de circulación
-    </button>
-
-    <button onclick="mostrarSeccion('facturas',this)">
-      Facturas electrónicas
-    </button>
-  </div>
+<nav>
+ <button class="activo" onclick="mostrarSeccion('inicio',this)">Inicio</button>
+ <button onclick="mostrarSeccion('permisos',this)">Permisos de circulación</button>
+ <button onclick="mostrarSeccion('facturas',this)">Facturas electrónicas</button>
 </nav>
 
-<main class="contenedor">
+<main>
 
-  <!-- INICIO -->
+<section id="inicio" class="seccion activa">
+ <h2>Bienvenido a CDMX</h2>
+ <p class="descripcion">
+  Portal de consulta de registros de demostración. Selecciona
+  una de las opciones para consultar la información correspondiente.
+ </p>
+ <div class="aviso">
+  Este sitio es una demostración y no está conectado a los sistemas
+  oficiales de las autoridades.
+ </div>
+</section>
 
-  <section id="inicio" class="seccion activa">
+<section id="permisos" class="seccion">
+ <h2>Consulta de permisos de circulación</h2>
+ <p class="descripcion">
+  Ingresa el folio del permiso para consultar la información registrada.
+ </p>
 
-    <div class="bienvenida">
-      <h2>Bienvenido al Portal de Consulta Digital CDMX</h2>
+ <form id="formPermiso">
+  <div class="formulario">
+   <div class="campo">
+    <label for="folio">Folio del permiso</label>
+    <input id="folio" type="text" placeholder="Ej. CDMX-2026-00001" required>
+   </div>
+  </div>
+  <button class="consultar" type="submit">Consultar permiso</button>
+ </form>
 
-      <p>
-        Consulte información de permisos de circulación y facturas
-        electrónicas mediante los datos de identificación del documento.
-        Seleccione el servicio que desea consultar.
-      </p>
-    </div>
+ <div id="errorPermiso" class="mensaje error">
+  No se encontró ningún permiso con ese folio.
+ </div>
+ <div id="resultadoPermiso" class="resultado"></div>
+</section>
 
-    <div class="modulo">
-      <h2>Servicios de consulta</h2>
+<section id="facturas" class="seccion">
+ <h2>Consulta de facturas electrónicas</h2>
+ <p class="descripcion">
+  Ingresa el UUID, RFC del emisor y RFC del receptor para realizar
+  la consulta de demostración.
+ </p>
 
-      <p>
-        Seleccione una de las siguientes opciones:
-      </p>
+ <form id="formFactura">
+  <div class="formulario">
+   <div class="campo">
+    <label for="uuid">UUID de la factura</label>
+    <input id="uuid" type="text" placeholder="UUID de la factura" required>
+   </div>
+   <div class="campo">
+    <label for="rfcEmisor">RFC del emisor</label>
+    <input id="rfcEmisor" type="text" placeholder="RFC emisor" required>
+   </div>
+   <div class="campo">
+    <label for="rfcReceptor">RFC del receptor</label>
+    <input id="rfcReceptor" type="text" placeholder="RFC receptor" required>
+   </div>
+  </div>
+  <button class="consultar" type="submit">Consultar factura</button>
+ </form>
 
-      <div class="acciones">
-
-        <button class="btn"
-          onclick="mostrarSeccion('permisos')">
-          Consultar permiso
-        </button>
-
-        <button class="btn"
-          onclick="mostrarSeccion('facturas')">
-          Consultar factura CFDI
-        </button>
-
-      </div>
-    </div>
-
-  </section>
-
-  <!-- CONSULTA DE PERMISOS -->
-
-  <section id="permisos" class="seccion">
-
-    <div class="modulo">
-
-      <h2>Consulta de permisos de circulación</h2>
-
-      <p>
-        Ingrese el número de folio correspondiente para localizar
-        la información registrada.
-      </p>
-
-      <form id="formPermiso">
-
-        <div class="campo">
-
-          <label for="folioPermiso">
-            Número de folio del permiso
-          </label>
-
-          <input
-            id="folioPermiso"
-            type="text"
-            placeholder="Ejemplo: CDMX-2026-00001"
-            required
-          >
-
-        </div>
-
-        <div class="acciones">
-
-          <button class="btn" type="submit">
-            Consultar permiso
-          </button>
-
-          <button
-            class="btn btn-secundario"
-            type="reset"
-            onclick="limpiar('resultadoPermiso')">
-            Limpiar
-          </button>
-
-        </div>
-
-      </form>
-
-      <div id="resultadoPermiso" class="resultado"></div>
-
-      <div id="errorPermiso" class="mensaje"></div>
-
-    </div>
-
-  </section>
-
-  <!-- CONSULTA DE FACTURAS -->
-
-  <section id="facturas" class="seccion">
-
-    <div class="modulo">
-
-      <h2>Consulta de facturas electrónicas</h2>
-
-      <p>
-        Ingrese el folio fiscal UUID y los RFC correspondientes
-        para localizar los datos de la factura.
-      </p>
-
-      <form id="formFactura">
-
-        <div class="campo">
-
-          <label for="uuid">
-            Folio fiscal (UUID)
-          </label>
-
-          <input
-            id="uuid"
-            type="text"
-            placeholder="Ingrese el folio fiscal"
-            required
-          >
-
-        </div>
-
-        <div class="campo">
-
-          <label for="rfcEmisor">
-            RFC del emisor
-          </label>
-
-          <input
-            id="rfcEmisor"
-            type="text"
-            placeholder="RFC del emisor"
-            required
-          >
-
-        </div>
-
-        <div class="campo">
-
-          <label for="rfcReceptor">
-            RFC del receptor
-          </label>
-
-          <input
-            id="rfcReceptor"
-            type="text"
-            placeholder="RFC del receptor"
-            required
-          >
-
-        </div>
-
-        <div class="acciones">
-
-          <button class="btn" type="submit">
-            Consultar factura
-          </button>
-
-          <button
-            class="btn btn-secundario"
-            type="reset"
-            onclick="limpiar('resultadoFactura')">
-            Limpiar
-          </button>
-
-        </div>
-
-      </form>
-
-      <div id="resultadoFactura" class="resultado"></div>
-
-      <div id="errorFactura" class="mensaje"></div>
-
-    </div>
-
-  </section>
+ <div id="errorFactura" class="mensaje error">
+  No se encontró una factura con los datos proporcionados.
+ </div>
+ <div id="resultadoFactura" class="resultado"></div>
+</section>
 
 </main>
 
-<footer class="pie">
-
-  <strong>PORTAL DE CONSULTA DIGITAL</strong>
-
-  <br>
-
-  Ciudad de México
-
-  <br>
-
-  Consulta de información de documentos electrónicos.
-
-  <br>
-
-  Este portal es oficial para validaciones oficiales
-  del SAT o de SEMOVI.
-
+<footer>
+ CDMX | Consulta de registros de demostración
+ <br><br>
+ Este sitio no constituye un portal oficial de SEMOVI ni del SAT.
 </footer>
 
 <script>
-
-/* =====================================================
-   BASE DE REGISTROS
-
-   AGREGA NUEVOS PERMISOS Y FACTURAS EN ESTAS LISTAS.
-
-   Cada registro debe corresponder a información autorizada.
-   Los registros ilustrativos no son documentos oficiales.
-===================================================== */
-
-
-/* BASE DE PERMISOS */
-
 const permisos = [
-
-  {
-    folio: "CDMX-2026-00001",
-    titular: "Juan Pérez Hernández",
-    marca: "Volkswagen",
-    modelo: "Jetta",
-    anio: "2026",
-    color: "Blanco",
-    placa: "Sin asignar",
-    numeroSerie: "VIN-EJEMPLO-000001",
-    fechaExpedicion: "19/12/2025",
-    vigencia: "19/12/2026",
-    estatus: "Sin asignar"
-  },
-
-  {
-    folio: "CDMX-2026-00002",
-    titular: "María López García",
-    marca: "Nissan",
-    modelo: "Versa",
-    anio: "2026",
-    color: "Gris",
-    placa: "Sin asignar",
-    numeroSerie: "VIN-EJEMPLO-000002",
-    fechaExpedicion: "20/12/2025",
-    vigencia: "20/12/2026",
-    estatus: "ENPROCESO DE VENTA"
-  }
-
+ {
+  folio:"CDMX-2026-00001",
+  titular:"Juan Pérez Hernández",
+  vehiculo:"Volkswagen Jetta",
+  modelo:"2026",
+  color:"Blanco",
+  placa:"Sin asignar",
+  numeroSerie:"VIN-EJEMPLO-000001",
+  fechaExpedicion:"19/12/2025",
+  vigencia:"19/12/2026",
+  estatus:"SIN ASIGNAR"
+ },
+ {
+  folio:"CDMX-2026-00002",
+  titular:"María López García",
+  vehiculo:"Nissan Versa",
+  modelo:"2026",
+  color:"Gris",
+  placa:"Sin asignar",
+  numeroSerie:"VIN-EJEMPLO-000002",
+  fechaExpedicion:"20/12/2025",
+  vigencia:"20/12/2026",
+  estatus:"EN PROCESO DE VENTA"
+ }
 ];
-
-
-/* BASE DE FACTURAS */
 
 const facturas = [
-
-  {
-    uuid: "37r07783-95t6-4821-93bs-79sb1-b1eb146",
-    emisor: "MB MOTOS S.A. DE C.V",
-    rfcEmisor: "OEHR571118SCA",
-    receptor: "CARLOS JESUS TEJAS BUSTOS",
-    rfcReceptor: "TEBC940326BE9",
-    fecha: "2024-01-25",
-    subtotal: 50,000.00,
-    iva: 8,000,
-    total: 58,000,
-    
-  },
-
-  {
-    uuid: "UUID-EJEMPLO-0002",
-    emisor: "Empresa Ejemplo S.A. de C.V.",
-    rfcEmisor: "XAXX010101000",
-    receptor: "María López García",
-    rfcReceptor: "XEXX010101000",
-    fecha: "20/01/2026",
-    subtotal: 15000,
-    iva: 2400,
-    total: 17400,
-    estatus: "VIGENTE"
-  }
-
+ {
+  uuid:"37r07783-95t6-4821-93bs-79sb1-b1eb146",
+  emisor:"MB MOTOS S.A. DE C.V",
+  rfcEmisor:"OEHR571118SCA",
+  receptor:"CARLOS JESUS TEJAS BUSTOS",
+  rfcReceptor:"TEBC940326BE9",
+  fecha:"2024-01-25",
+  subtotal:50000.00,
+  iva:8000,
+  total:58000,
+  estatus:"PENDIENTE DE VALIDACIÓN"
+ },
+ {
+  uuid:"UUID-EJEMPLO-0002",
+  emisor:"Empresa Ejemplo S.A. de C.V.",
+  rfcEmisor:"XAXX010101000",
+  receptor:"María López García",
+  rfcReceptor:"XEXX010101000",
+  fecha:"20/01/2026",
+  subtotal:15000,
+  iva:2400,
+  total:17400,
+  estatus:"VIGENTE"
+ }
 ];
 
+function mostrarSeccion(id,boton){
+ document.querySelectorAll(".seccion").forEach(s=>{
+  s.classList.remove("activa");
+ });
+ document.getElementById(id).classList.add("activa");
 
-/* =====================================================
-   NAVEGACIÓN DEL PORTAL
-===================================================== */
+ document.querySelectorAll("nav button").forEach(b=>{
+  b.classList.remove("activo");
+ });
 
-function mostrarSeccion(id, boton) {
-
-  document.querySelectorAll(".seccion").forEach(s => {
-    s.classList.remove("activa");
-  });
-
-  document.getElementById(id).classList.add("activa");
-
-  document.querySelectorAll(".menu button").forEach(b => {
-    b.classList.remove("activo");
-  });
-
-  if (boton) {
-    boton.classList.add("activo");
-  }
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
+ if(boton) boton.classList.add("activo");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
-/* =====================================================
-   LIMPIAR RESULTADOS
-===================================================== */
-
-function limpiar(id) {
-
-  const elemento = document.getElementById(id);
-
-  elemento.style.display = "none";
-  elemento.innerHTML = "";
-
-  const errorId = id === "resultadoPermiso"
-    ? "errorPermiso"
-    : "errorFactura";
-
-  document.getElementById(errorId).style.display = "none";
-
+function limpiar(resultado,error){
+ document.getElementById(resultado).style.display="none";
+ document.getElementById(resultado).innerHTML="";
+ document.getElementById(error).style.display="none";
 }
 
+function escapar(valor){
+ return String(valor ?? "").replace(/[&<>"']/g,function(c){
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[c];
+ });
+}
 
-/* =====================================================
-   CONSULTA DE PERMISOS
-===================================================== */
+function dato(etiqueta,valor){
+ return `
+  <div class="dato">
+   <strong>${escapar(etiqueta)}</strong>
+   <span>${escapar(valor)}</span>
+  </div>
+ `;
+}
 
-document.getElementById("formPermiso")
-.addEventListener("submit", function(e) {
+function formato(cantidad){
+ return new Intl.NumberFormat("es-MX",{
+  style:"currency",
+  currency:"MXN"
+ }).format(cantidad);
+}
 
-  e.preventDefault();
+document.getElementById("formPermiso").addEventListener("submit",function(e){
+ e.preventDefault();
 
-  const folio = document.getElementById("folioPermiso")
-    .value.trim().toUpperCase();
+ limpiar("resultadoPermiso","errorPermiso");
 
-  const permiso = permisos.find(p =>
-    p.folio.toUpperCase() === folio
-  );
+ const folio=document.getElementById("folio").value.trim().toUpperCase();
 
-  const resultado =
-    document.getElementById("resultadoPermiso");
+ const permiso=permisos.find(p=>p.folio.toUpperCase()===folio);
 
-  const error =
-    document.getElementById("errorPermiso");
+ if(!permiso){
+  document.getElementById("errorPermiso").style.display="block";
+  return;
+ }
 
-  resultado.style.display = "none";
-  error.style.display = "none";
+ const resultado=document.getElementById("resultadoPermiso");
 
-  if (!permiso) {
+ resultado.innerHTML=`
+  <h3>Información del permiso</h3>
+  <div class="grid-datos">
+   ${dato("Folio",permiso.folio)}
+   ${dato("Titular",permiso.titular)}
+   ${dato("Vehículo",permiso.vehiculo)}
+   ${dato("Modelo",permiso.modelo)}
+   ${dato("Color",permiso.color)}
+   ${dato("Placa",permiso.placa)}
+   ${dato("Número de serie",permiso.numeroSerie)}
+   ${dato("Fecha de expedición",permiso.fechaExpedicion)}
+   ${dato("Vigencia",permiso.vigencia)}
+   ${dato("Estatus",permiso.estatus)}
+  </div>
+  <div class="aviso">
+   Registro de demostración. No representa una validación oficial.
+  </div>
+ `;
 
-    error.textContent =
-      "No se encontró un registro con el folio ingresado. Verifique la información e inténtelo nuevamente.";
-
-    error.style.display = "block";
-
-    return;
-
-  }
-
-  resultado.innerHTML = `
-
-    <div class="resultado-cabecera">
-
-      <h3>Información del permiso</h3>
-
-      <span class="estado">
-        ${escapar(permiso.estatus)}
-      </span>
-
-    </div>
-
-    <div class="detalles">
-
-      ${dato("Número de folio", permiso.folio)}
-
-      ${dato("Titular", permiso.titular)}
-
-      ${dato("Marca", permiso.marca)}
-
-      ${dato("Modelo", permiso.modelo)}
-
-      ${dato("Año", permiso.anio)}
-
-      ${dato("Color", permiso.color)}
-
-      ${dato("Placa", permiso.placa)}
-
-      ${dato("Número de serie", permiso.numeroSerie)}
-
-      ${dato("Fecha de expedición", permiso.fechaExpedicion)}
-
-      ${dato("Fecha de vigencia", permiso.vigencia)}
-
-    </div>
-
-    <div class="aviso">
-
-      Registro y validación oficial de SEMOVI.
-
-    </div>
-
-  `;
-
-  resultado.style.display = "block";
-
+ resultado.style.display="block";
 });
 
+document.getElementById("formFactura").addEventListener("submit",function(e){
+ e.preventDefault();
 
-/* =====================================================
-   CONSULTA DE FACTURAS ELECTRÓNICAS
-===================================================== */
+ limpiar("resultadoFactura","errorFactura");
 
-document.getElementById("formFactura")
-.addEventListener("submit", function(e) {
+ const uuid=document.getElementById("uuid").value.trim().toUpperCase();
+ const rfcEmisor=document.getElementById("rfcEmisor").value.trim().toUpperCase();
+ const rfcReceptor=document.getElementById("rfcReceptor").value.trim().toUpperCase();
 
-  e.preventDefault();
+ const factura=facturas.find(f=>
+  f.uuid.toUpperCase()===uuid &&
+  f.rfcEmisor.toUpperCase()===rfcEmisor &&
+  f.rfcReceptor.toUpperCase()===rfcReceptor
+ );
 
-  const uuid = document.getElementById("uuid")
-    .value.trim().toUpperCase();
+ if(!factura){
+  document.getElementById("errorFactura").style.display="block";
+  return;
+ }
 
-  const emisor = document.getElementById("rfcEmisor")
-    .value.trim().toUpperCase();
+ const resultado=document.getElementById("resultadoFactura");
 
-  const receptor = document.getElementById("rfcReceptor")
-    .value.trim().toUpperCase();
+ resultado.innerHTML=`
+  <h3>Información de la factura</h3>
+  <div class="grid-datos">
+   ${dato("UUID",factura.uuid)}
+   ${dato("Emisor",factura.emisor)}
+   ${dato("RFC del emisor",factura.rfcEmisor)}
+   ${dato("Receptor",factura.receptor)}
+   ${dato("RFC del receptor",factura.rfcReceptor)}
+   ${dato("Fecha",factura.fecha)}
+   ${dato("Subtotal",formato(factura.subtotal))}
+   ${dato("IVA",formato(factura.iva))}
+   ${dato("Total",formato(factura.total))}
+   ${dato("Estatus",factura.estatus)}
+  </div>
+  <div class="aviso">
+   Registro de demostración. No representa una validación oficial ante el SAT.
+  </div>
+ `;
 
-  const factura = facturas.find(f =>
-
-    f.uuid.toUpperCase() === uuid &&
-
-    f.rfcEmisor.toUpperCase() === emisor &&
-
-    f.rfcReceptor.toUpperCase() === receptor
-
-  );
-
-  const resultado =
-    document.getElementById("resultadoFactura");
-
-  const error =
-    document.getElementById("errorFactura");
-
-  resultado.style.display = "none";
-  error.style.display = "none";
-
-  if (!factura) {
-
-    error.textContent =
-      "No se encontró una coincidencia con los datos ingresados. Verifique el UUID y los RFC.";
-
-    error.style.display = "block";
-
-    return;
-
-  }
-
-  resultado.innerHTML = `
-
-    <div class="resultado-cabecera">
-
-      <h3>Información de la factura electrónica</h3>
-
-      <span class="estado">
-        ${escapar(factura.estatus)}
-      </span>
-
-    </div>
-
-    <div class="detalles">
-
-      ${dato("Folio fiscal UUID", factura.uuid)}
-
-      ${dato("Fecha de emisión", factura.fecha)}
-
-      ${dato("Nombre del emisor", factura.emisor)}
-
-      ${dato("RFC del emisor", factura.rfcEmisor)}
-
-      ${dato("Nombre del receptor", factura.receptor)}
-
-      ${dato("RFC del receptor", factura.rfcReceptor)}
-
-      ${dato("Subtotal", formato(factura.subtotal))}
-
-      ${dato("IVA", formato(factura.iva))}
-
-      ${dato("Total", formato(factura.total))}
-
-    </div>
-
-    <div class="aviso">
-
-      Registro y validación fiscal del SAT.
-
-    </div>
-
-  `;
-
-  resultado.style.display = "block";
-
+ resultado.style.display="block";
 });
-
-
-/* =====================================================
-   FUNCIONES GENERALES
-===================================================== */
-
-function dato(etiqueta, valor) {
-
-  return `
-
-    <div class="dato">
-
-      <small>${escapar(etiqueta)}</small>
-
-      <strong>${escapar(valor)}</strong>
-
-    </div>
-
-  `;
-
-}
-
-
-function escapar(valor) {
-
-  return String(valor ?? "").replace(/[&<>"']/g, caracter => ({
-
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-
-  })[caracter]);
-
-}
-
-
-function formato(cantidad) {
-
-  return new Intl.NumberFormat("es-MX", {
-
-    style: "currency",
-    currency: "MXN"
-
-  }).format(cantidad);
-
-}
-
 </script>
 
 </body>
